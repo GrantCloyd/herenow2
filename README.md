@@ -12,7 +12,7 @@
 
 A meditation app designed for users and content creators to come together and interact with each other through guided meditations, messaging, following, favoriting, and donations while tracking and providing relevant user/creator data.  
 
-
+Deployed on Heroku: [Here|Now](https://herenowmeditations.herokuapp.com/)
 
 ## Requirements
 
