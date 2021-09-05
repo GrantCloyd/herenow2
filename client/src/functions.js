@@ -12,7 +12,7 @@ export const createConfig = (method, obj = "") => {
 }
 
 export const makeLinkForBlob = blob => {
-   return `http://localhost:3000${blob}`
+   return `https://herenowmeditations.herokuapp.com${blob}`
 }
 
 // add Styled or Unstyled Icon Component, the action for the button, and (opt) if it needs to be submitted in a form
