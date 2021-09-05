@@ -4,4 +4,3 @@ node_modules
 /config/application.yml
 
 
-config/master.key
