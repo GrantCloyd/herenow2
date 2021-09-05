@@ -1,0 +1,554 @@
+  [1m[35m (340.8ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_development" ENCODING = 'unicode'[0m
+  [1m[35m (279.9ms)[0m  [1m[35mCREATE DATABASE "react_rails_api_project_template_test" ENCODING = 'unicode'[0m
+  [1m[35m (25.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (5.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-09-05 12:07:05.164385"], ["updated_at", "2021-09-05 12:07:05.164385"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:07:45 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LogInController#me as */*
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 4.5ms | Allocations: 7413)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "students" does not exist
+LINE 8:  WHERE a.attrelid = '"students"'::regclass
+                            ^
+):
+  
+app/controllers/log_in_controller.rb:25:in `me'
+Started POST "/log_in" for 127.0.0.1 at 2021-09-05 07:07:47 -0500
+Processing by LogInController#create as JSON
+  Parameters: {"email"=>"guestS", "password"=>"[FILTERED]", "type"=>"student", "log_in"=>{"email"=>"guestS", "password"=>"[FILTERED]", "type"=>"student"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.6ms | Allocations: 203)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "students" does not exist
+LINE 8:  WHERE a.attrelid = '"students"'::regclass
+                            ^
+):
+  
+app/controllers/log_in_controller.rb:6:in `create'
+Started POST "/users" for 127.0.0.1 at 2021-09-05 07:08:00 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"guest", "email"=>"guest", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "type"=>"teacher", "user"=>{"name"=>"guest", "email"=>"guest", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "type"=>"teacher"}}
+[31mUnpermitted parameters: :confirmPassword, :type, :user[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.7ms | Allocations: 2595)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "teachers" does not exist
+LINE 8:  WHERE a.attrelid = '"teachers"'::regclass
+                            ^
+):
+  
+app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1087325618115650655)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20210809182104)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.5ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (17.6ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210809182104"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStudents (20210809184237)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE "students" ("id" bigserial primary key, "name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210809184237"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTeachers (20210809184243)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "teachers" ("id" bigserial primary key, "name" character varying, "email" character varying, "password_digest" character varying, "background" text, "image_url" text DEFAULT 'https://clipground.com/images/avatar-clipart-free-6.png', "income" decimal DEFAULT 0.0, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210809184243"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMeditations (20210809185615)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "meditations" ("id" bigserial primary key, "med_type" character varying, "title" character varying, "description" text, "est_length" integer, "teacher_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210809185615"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlays (20210809190223)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "plays" ("id" bigserial primary key, "student_id" integer, "meditation_id" integer, "length" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210809190223"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFollows (20210812140017)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "follows" ("id" bigserial primary key, "student_id" integer, "teacher_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210812140017"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessages (20210813155149)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "content" text, "student_id" integer, "teacher_id" integer, "chat_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210813155149"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateChats (20210813161330)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "chats" ("id" bigserial primary key, "title" character varying, "student_id" integer, "teacher_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210813161330"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUsernameToMessages (20210813173823)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "messages" ADD "username" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210813173823"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddOptInAndFollowMessageToTeacher (20210814142147)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "teachers" ADD "opt_in" boolean DEFAULT FALSE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "teachers" ADD "follow_message" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210814142147"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFavorites (20210814155100)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "favorites" ("id" bigserial primary key, "meditation_id" integer, "student_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210814155100"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDonations (20210816155227)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE TABLE "donations" ("id" bigserial primary key, "student_id" integer, "teacher_id" integer, "amount" decimal, "message" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210816155227"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUsernameToDonation (20210816160506)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "donations" ADD "username" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210816160506"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1087325618115650655)[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for 127.0.0.1 at 2021-09-05 07:10:01 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"guest", "email"=>"guest", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "type"=>"teacher", "user"=>{"name"=>"guest", "email"=>"guest", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "type"=>"teacher"}}
+[31mUnpermitted parameters: :confirmPassword, :type, :user[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mTeacher Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "teachers" WHERE "teachers"."email" = $1 LIMIT $2[0m  [["email", "guest"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mTeacher Create (0.9ms)[0m  [1m[32mINSERT INTO "teachers" ("name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "guest"], ["email", "guest"], ["password_digest", "$2a$12$gZVy3BIqvOt4jwfZM7pxYO3ha074vfegjk/W.562z650wQSCEtmT."], ["created_at", "2021-09-05 12:10:01.690775"], ["updated_at", "2021-09-05 12:10:01.690775"]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.46ms)
+Completed 200 OK in 314ms (Views: 4.6ms | ActiveRecord: 8.6ms | Allocations: 15187)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-09-05 07:10:28 -0500
+Processing by UsersController#create as JSON
+  Parameters: {"name"=>"guest", "email"=>"guestS", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "type"=>"student", "user"=>{"name"=>"guest", "email"=>"guestS", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "type"=>"student"}}
+[31mUnpermitted parameters: :confirmPassword, :type, :user[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mStudent Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email" = $1 LIMIT $2[0m  [["email", "guestS"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mStudent Create (0.8ms)[0m  [1m[32mINSERT INTO "students" ("name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "guest"], ["email", "guestS"], ["password_digest", "$2a$12$xdaTlhFkTgK.cnimJZ/V3epQKwc.ul/J9jvANhzDTf4bEXTNAvfHq"], ["created_at", "2021-09-05 12:10:28.708710"], ["updated_at", "2021-09-05 12:10:28.708710"]]
+  ↳ app/controllers/users_controller.rb:4:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:4:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Student (0.71ms)
+Completed 200 OK in 301ms (Views: 2.8ms | ActiveRecord: 8.2ms | Allocations: 9737)
+
+
+Started POST "/log_in" for 127.0.0.1 at 2021-09-05 07:10:29 -0500
+Processing by LogInController#create as JSON
+  Parameters: {"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher", "log_in"=>{"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher"}}
+  [1m[36mTeacher Load (0.3ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."email" = $1 LIMIT $2[0m  [["email", "guest"], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.48ms)
+Completed 200 OK in 266ms (Views: 1.0ms | ActiveRecord: 0.5ms | Allocations: 1632)
+
+
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:10:34 -0500
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (0.4ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (1.41ms)
+Completed 200 OK in 20ms (Views: 2.1ms | ActiveRecord: 0.8ms | Allocations: 1558)
+
+
+Started GET "/%3Canonymous%3E" for 127.0.0.1 at 2021-09-05 07:10:34 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/%3Canonymous%3E"):
+  
+Started GET "/%3Canonymous%3E" for 127.0.0.1 at 2021-09-05 07:10:34 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/%3Canonymous%3E"):
+  
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:11:32 -0500
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (0.5ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (2.72ms)
+Completed 200 OK in 12ms (Views: 3.9ms | ActiveRecord: 1.0ms | Allocations: 1418)
+
+
+Started DELETE "/log_in" for 127.0.0.1 at 2021-09-05 07:11:34 -0500
+Processing by LogInController#destroy as JSON
+  Parameters: {"_json"=>"", "log_in"=>{"_json"=>""}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 182)
+
+
+Started POST "/log_in" for 127.0.0.1 at 2021-09-05 07:11:36 -0500
+Processing by LogInController#create as JSON
+  Parameters: {"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher", "log_in"=>{"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher"}}
+  [1m[36mTeacher Load (0.5ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."email" = $1 LIMIT $2[0m  [["email", "guest"], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.25ms)
+Completed 200 OK in 266ms (Views: 1.0ms | ActiveRecord: 0.5ms | Allocations: 942)
+
+
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:11:54 -0500
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.6ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (0.7ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.65ms)
+Completed 200 OK in 10ms (Views: 1.5ms | ActiveRecord: 1.3ms | Allocations: 1416)
+
+
+Started GET "/%3Canonymous%3E" for 127.0.0.1 at 2021-09-05 07:11:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/%3Canonymous%3E"):
+  
+Started GET "/%3Canonymous%3E" for 127.0.0.1 at 2021-09-05 07:11:54 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/%3Canonymous%3E"):
+  
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:11:59 -0500
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (0.9ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.34ms)
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 1.3ms | Allocations: 1424)
+
+
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:12:56 -0500
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (1.2ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.52ms)
+Completed 200 OK in 8ms (Views: 1.4ms | ActiveRecord: 1.6ms | Allocations: 1412)
+
+
+Started GET "/%3Canonymous%3E" for 127.0.0.1 at 2021-09-05 07:12:56 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/%3Canonymous%3E"):
+  
+Started GET "/%3Canonymous%3E" for 127.0.0.1 at 2021-09-05 07:12:57 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/%3Canonymous%3E"):
+  
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:13:01 -0500
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.7ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (0.7ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.43ms)
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 1.4ms | Allocations: 1413)
+
+
+Started DELETE "/log_in" for 127.0.0.1 at 2021-09-05 07:13:03 -0500
+Processing by LogInController#destroy as JSON
+  Parameters: {"_json"=>"", "log_in"=>{"_json"=>""}}
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 166)
+
+
+Started POST "/log_in" for 127.0.0.1 at 2021-09-05 07:13:07 -0500
+Processing by LogInController#create as JSON
+  Parameters: {"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher", "log_in"=>{"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher"}}
+  [1m[36mTeacher Load (0.5ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."email" = $1 LIMIT $2[0m  [["email", "guest"], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.25ms)
+Completed 200 OK in 264ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 921)
+
+
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:14:38 -0500
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (0.4ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Teacher (0.4ms)
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.7ms | Allocations: 1428)
+
+
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:14:56 -0500
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.8ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (0.6ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+[active_model_serializers]   [1m[36mMeditation Load (1.7ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:43:in `last_med'
+[active_model_serializers]   [1m[35m (2.5ms)[0m  [1m[34mSELECT SUM("donations"."amount") FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:19:in `total_income'
+[active_model_serializers]   [1m[36mDonation Load (0.8ms)[0m  [1m[34mSELECT "donations".* FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:23:in `most_donated_student'
+[active_model_serializers]   [1m[36mFollow Load (1.2ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:30:in `me'
+[active_model_serializers]   [1m[36mChat Load (1.2ms)[0m  [1m[34mSELECT "chats".* FROM "chats" WHERE "chats"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:30:in `me'
+[active_model_serializers] Rendered TeacherSerializer with ActiveModelSerializers::Adapter::Attributes (121.79ms)
+Completed 200 OK in 238ms (Views: 135.8ms | ActiveRecord: 42.8ms | Allocations: 34230)
+
+
+Started DELETE "/log_in" for 127.0.0.1 at 2021-09-05 07:14:57 -0500
+Processing by LogInController#destroy as JSON
+  Parameters: {"_json"=>"", "log_in"=>{"_json"=>""}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 187)
+
+
+Started POST "/log_in" for 127.0.0.1 at 2021-09-05 07:14:59 -0500
+Processing by LogInController#create as JSON
+  Parameters: {"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher", "log_in"=>{"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher"}}
+  [1m[36mTeacher Load (0.4ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."email" = $1 LIMIT $2[0m  [["email", "guest"], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:9:in `create'
+[active_model_serializers]   [1m[36mMeditation Load (0.4ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:43:in `last_med'
+[active_model_serializers]   [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("donations"."amount") FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:19:in `total_income'
+[active_model_serializers]   [1m[36mDonation Load (0.4ms)[0m  [1m[34mSELECT "donations".* FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:23:in `most_donated_student'
+[active_model_serializers]   [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:13:in `create'
+[active_model_serializers]   [1m[36mChat Load (0.6ms)[0m  [1m[34mSELECT "chats".* FROM "chats" WHERE "chats"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:13:in `create'
+[active_model_serializers] Rendered TeacherSerializer with ActiveModelSerializers::Adapter::Attributes (11.26ms)
+Completed 200 OK in 276ms (Views: 10.0ms | ActiveRecord: 2.4ms | Allocations: 4766)
+
+
+Started DELETE "/log_in" for 127.0.0.1 at 2021-09-05 07:15:11 -0500
+Processing by LogInController#destroy as JSON
+  Parameters: {"_json"=>"", "log_in"=>{"_json"=>""}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 182)
+
+
+Started POST "/log_in" for 127.0.0.1 at 2021-09-05 07:15:13 -0500
+Processing by LogInController#create as JSON
+  Parameters: {"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher", "log_in"=>{"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher"}}
+  [1m[36mTeacher Load (0.4ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."email" = $1 LIMIT $2[0m  [["email", "guest"], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:9:in `create'
+[active_model_serializers]   [1m[36mMeditation Load (0.3ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:43:in `last_med'
+[active_model_serializers]   [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("donations"."amount") FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:19:in `total_income'
+[active_model_serializers]   [1m[36mDonation Load (0.4ms)[0m  [1m[34mSELECT "donations".* FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:23:in `most_donated_student'
+[active_model_serializers]   [1m[36mFollow Load (0.3ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:13:in `create'
+[active_model_serializers]   [1m[36mChat Load (1.2ms)[0m  [1m[34mSELECT "chats".* FROM "chats" WHERE "chats"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:13:in `create'
+[active_model_serializers] Rendered TeacherSerializer with ActiveModelSerializers::Adapter::Attributes (13.25ms)
+Completed 200 OK in 277ms (Views: 11.3ms | ActiveRecord: 3.0ms | Allocations: 4654)
+
+
+Started POST "/meditations" for 127.0.0.1 at 2021-09-05 07:15:46 -0500
+Processing by MeditationsController#create as HTML
+  Parameters: {"title"=>"Testing", "description"=>"wub", "med_type"=>"Breath", "est_length"=>"3", "audio_file"=>#<ActionDispatch::Http::UploadedFile:0x00007fdd106d1948 @tempfile=#<Tempfile:/var/folders/44/mqbj0ph116j45zlnzw_ryx780000gn/T/RackMultipart20210905-24014-198i2rg>, @original_filename="blob", @content_type="audio/webm;codecs=opus", @headers="Content-Disposition: form-data; name=\"audio_file\"; filename=\"blob\"\r\nContent-Type: audio/webm;codecs=opus\r\n">, "teacher_id"=>"1"}
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 3.0ms | Allocations: 8423)
+
+
+  
+RuntimeError (YAML syntax error occurred while parsing /Users/grant/flatiron/code/mod5/remake/herenow2/config/storage.yml. Please note that YAML must be consistently indented using spaces. Tabs are not allowed. Error: (<unknown>): did not find expected key while parsing a block mapping at line 6 column 3):
+  
+app/controllers/meditations_controller.rb:16:in `create'
+Started DELETE "/log_in" for 127.0.0.1 at 2021-09-05 07:16:14 -0500
+Processing by LogInController#destroy as JSON
+  Parameters: {"_json"=>"", "log_in"=>{"_json"=>""}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 202)
+
+
+Started GET "/me" for 127.0.0.1 at 2021-09-05 07:19:12 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LogInController#me as */*
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:25:in `me'
+  [1m[36mTeacher Load (0.8ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:26:in `me'
+Completed 200 OK in 54ms (Views: 0.6ms | ActiveRecord: 7.9ms | Allocations: 10814)
+
+
+Started POST "/log_in" for 127.0.0.1 at 2021-09-05 07:19:19 -0500
+Processing by LogInController#create as JSON
+  Parameters: {"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher", "log_in"=>{"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher"}}
+  [1m[36mTeacher Load (0.4ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."email" = $1 LIMIT $2[0m  [["email", "guest"], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:9:in `create'
+[active_model_serializers]   [1m[36mMeditation Load (0.6ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:43:in `last_med'
+[active_model_serializers]   [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM("donations"."amount") FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:19:in `total_income'
+[active_model_serializers]   [1m[36mDonation Load (0.3ms)[0m  [1m[34mSELECT "donations".* FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:23:in `most_donated_student'
+[active_model_serializers]   [1m[36mFollow Load (0.7ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:13:in `create'
+[active_model_serializers]   [1m[36mChat Load (1.0ms)[0m  [1m[34mSELECT "chats".* FROM "chats" WHERE "chats"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:13:in `create'
+[active_model_serializers] Rendered TeacherSerializer with ActiveModelSerializers::Adapter::Attributes (58.11ms)
+Completed 200 OK in 347ms (Views: 57.7ms | ActiveRecord: 18.2ms | Allocations: 19956)
+
+
+Started POST "/meditations" for 127.0.0.1 at 2021-09-05 07:19:37 -0500
+Processing by MeditationsController#create as HTML
+  Parameters: {"title"=>"Testing", "description"=>"Wubwub", "med_type"=>"Breath", "est_length"=>"3", "audio_file"=>#<ActionDispatch::Http::UploadedFile:0x00007fb656eda508 @tempfile=#<Tempfile:/var/folders/44/mqbj0ph116j45zlnzw_ryx780000gn/T/RackMultipart20210905-24104-19ud8fy>, @original_filename="blob", @content_type="audio/webm;codecs=opus", @headers="Content-Disposition: form-data; name=\"audio_file\"; filename=\"blob\"\r\nContent-Type: audio/webm;codecs=opus\r\n">, "teacher_id"=>"1"}
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 2.3ms | Allocations: 7210)
+
+
+  
+RuntimeError (YAML syntax error occurred while parsing /Users/grant/flatiron/code/mod5/remake/herenow2/config/storage.yml. Please note that YAML must be consistently indented using spaces. Tabs are not allowed. Error: (<unknown>): did not find expected key while parsing a block mapping at line 1 column 1):
+  
+app/controllers/meditations_controller.rb:16:in `create'
+Started DELETE "/log_in" for 127.0.0.1 at 2021-09-05 07:20:07 -0500
+Processing by LogInController#destroy as JSON
+  Parameters: {"_json"=>"", "log_in"=>{"_json"=>""}}
+Completed 204 No Content in 1ms (ActiveRecord: 0.0ms | Allocations: 210)
+
+
+Started POST "/log_in" for 127.0.0.1 at 2021-09-05 07:22:02 -0500
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LogInController#create as JSON
+  Parameters: {"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher", "log_in"=>{"email"=>"guest", "password"=>"[FILTERED]", "type"=>"teacher"}}
+  [1m[36mTeacher Load (0.9ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."email" = $1 LIMIT $2[0m  [["email", "guest"], ["LIMIT", 1]]
+  ↳ app/controllers/log_in_controller.rb:9:in `create'
+[active_model_serializers]   [1m[36mMeditation Load (0.4ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:43:in `last_med'
+[active_model_serializers]   [1m[35m (0.9ms)[0m  [1m[34mSELECT SUM("donations"."amount") FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:19:in `total_income'
+[active_model_serializers]   [1m[36mDonation Load (0.3ms)[0m  [1m[34mSELECT "donations".* FROM "donations" WHERE "donations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_serializer.rb:23:in `most_donated_student'
+[active_model_serializers]   [1m[36mFollow Load (0.5ms)[0m  [1m[34mSELECT "follows".* FROM "follows" WHERE "follows"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:13:in `create'
+[active_model_serializers]   [1m[36mChat Load (0.5ms)[0m  [1m[34mSELECT "chats".* FROM "chats" WHERE "chats"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/controllers/log_in_controller.rb:13:in `create'
+[active_model_serializers] Rendered TeacherSerializer with ActiveModelSerializers::Adapter::Attributes (42.98ms)
+Completed 200 OK in 386ms (Views: 42.7ms | ActiveRecord: 21.6ms | Allocations: 27080)
+
+
+Started POST "/meditations" for 127.0.0.1 at 2021-09-05 07:22:20 -0500
+Processing by MeditationsController#create as HTML
+  Parameters: {"title"=>"Testing", "description"=>"wubwub", "med_type"=>"Breath", "est_length"=>"3", "audio_file"=>#<ActionDispatch::Http::UploadedFile:0x00007ffa02a9aae8 @tempfile=#<Tempfile:/var/folders/44/mqbj0ph116j45zlnzw_ryx780000gn/T/RackMultipart20210905-24226-10dufrm>, @original_filename="blob", @content_type="audio/webm;codecs=opus", @headers="Content-Disposition: form-data; name=\"audio_file\"; filename=\"blob\"\r\nContent-Type: audio/webm;codecs=opus\r\n">, "teacher_id"=>"1"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/meditations_controller.rb:16:in `create'
+  [1m[36mTeacher Load (0.4ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meditations_controller.rb:16:in `create'
+  [1m[36mMeditation Create (1.8ms)[0m  [1m[32mINSERT INTO "meditations" ("med_type", "title", "description", "est_length", "teacher_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["med_type", "Breath"], ["title", "Testing"], ["description", "wubwub"], ["est_length", 3], ["teacher_id", 1], ["created_at", "2021-09-05 12:22:20.529388"], ["updated_at", "2021-09-05 12:22:20.529388"]]
+  ↳ app/controllers/meditations_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Attachment Load (3.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Meditation"], ["name", "audio_file"], ["LIMIT", 1]]
+  ↳ app/controllers/meditations_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Blob Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "xd5wm3xagj8gn27xc2nbtnu4sr06"], ["filename", "blob"], ["content_type", "video/webm"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 22774], ["checksum", "4gNNhOvXX/HsLMq8QuWMMw=="], ["created_at", "2021-09-05 12:22:20.541364"]]
+  ↳ app/controllers/meditations_controller.rb:16:in `create'
+  [1m[36mActiveStorage::Attachment Create (4.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "audio_file"], ["record_type", "Meditation"], ["record_id", 1], ["blob_id", 1], ["created_at", "2021-09-05 12:22:20.544852"]]
+  ↳ app/controllers/meditations_controller.rb:16:in `create'
+  [1m[36mMeditation Update (2.6ms)[0m  [1m[33mUPDATE "meditations" SET "updated_at" = $1 WHERE "meditations"."id" = $2[0m  [["updated_at", "2021-09-05 12:22:20.552221"], ["id", 1]]
+  ↳ app/controllers/meditations_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/meditations_controller.rb:16:in `create'
+[36m  Disk Storage (1.6ms) [0m[32mUploaded file to key: xd5wm3xagj8gn27xc2nbtnu4sr06 (checksum: 4gNNhOvXX/HsLMq8QuWMMw==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 2ddc3e12-7e05-4189-9a45-77a1a0dcb707) to Async(default) with arguments: #<GlobalID:0x00007ffa02404350 @uri=#<URI::GID gid://react-rails-api-project-template/ActiveStorage::Blob/1>>
+[active_model_serializers]   [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "plays" WHERE "plays"."meditation_id" = $1[0m  [["meditation_id", 1]]
+[active_model_serializers]   ↳ app/serializers/meditation_serializer.rb:9:in `listens'
+[active_model_serializers]   [1m[36mFavorite Load (1.8ms)[0m  [1m[34mSELECT "favorites".* FROM "favorites" WHERE "favorites"."meditation_id" = $1[0m  [["meditation_id", 1]]
+[active_model_serializers]   ↳ app/controllers/meditations_controller.rb:17:in `create'
+[active_model_serializers]   [1m[36mMeditation Load (0.6ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_index_serializer.rb:5:in `med_number'
+[active_model_serializers]   [1m[36mPlay Load (1.9ms)[0m  [1m[34mSELECT "plays".* FROM "plays" WHERE "plays"."meditation_id" = $1[0m  [["meditation_id", 1]]
+[active_model_serializers]   ↳ app/serializers/teacher_index_serializer.rb:9:in `block in total_listens'
+[active_model_serializers] Rendered MeditationSerializer with ActiveModelSerializers::Adapter::Attributes (42.81ms)
+Completed 200 OK in 185ms (Views: 35.1ms | ActiveRecord: 41.5ms | Allocations: 35626)
+
+
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ddc3e12-7e05-4189-9a45-77a1a0dcb707] Performing ActiveStorage::AnalyzeJob (Job ID: 2ddc3e12-7e05-4189-9a45-77a1a0dcb707) from Async(default) enqueued at 2021-09-05T12:22:20Z with arguments: #<GlobalID:0x00007ffa0227efd0 @uri=#<URI::GID gid://react-rails-api-project-template/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ddc3e12-7e05-4189-9a45-77a1a0dcb707] [36m  Disk Storage (0.2ms) [0m[34mDownloaded file from key: xd5wm3xagj8gn27xc2nbtnu4sr06[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ddc3e12-7e05-4189-9a45-77a1a0dcb707] Skipping video analysis because FFmpeg isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ddc3e12-7e05-4189-9a45-77a1a0dcb707]   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ddc3e12-7e05-4189-9a45-77a1a0dcb707]   [1m[36mActiveStorage::Blob Update (2.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ddc3e12-7e05-4189-9a45-77a1a0dcb707]   [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ddc3e12-7e05-4189-9a45-77a1a0dcb707] Performed ActiveStorage::AnalyzeJob (Job ID: 2ddc3e12-7e05-4189-9a45-77a1a0dcb707) from Async(default) in 35.04ms
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09c9ebeaf384bfe85d7d97027d4fed67e9242ea1/blob" for ::1 at 2021-09-05 07:22:26 -0500
+Processing by ActiveStorage::Blobs::RedirectController#show as */*
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09c9ebeaf384bfe85d7d97027d4fed67e9242ea1", "filename"=>"blob"}
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (1.1ms) [0m[34mGenerated URL for file at key: xd5wm3xagj8gn27xc2nbtnu4sr06 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR1ExZDIwemVHRm5hamhuYmpJM2VHTXlibUowYm5VMGMzSXdOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTjJGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSmliRzlpSWpzZ1ptbHNaVzVoYldVcVBWVlVSaTA0SnlkaWJHOWlCanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQZG1sa1pXOHZkMlZpYlFZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMS0wOS0wNVQxMjoyNzoyNi43NzBaIiwicHVyIjoiYmxvYl9rZXkifX0=--23bd01e16aa8e144a5fe825c770b17b21a839d5c/blob)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR1ExZDIwemVHRm5hamhuYmpJM2VHTXlibUowYm5VMGMzSXdOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTjJGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSmliRzlpSWpzZ1ptbHNaVzVoYldVcVBWVlVSaTA0SnlkaWJHOWlCanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQZG1sa1pXOHZkMlZpYlFZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMS0wOS0wNVQxMjoyNzoyNi43NzBaIiwicHVyIjoiYmxvYl9rZXkifX0=--23bd01e16aa8e144a5fe825c770b17b21a839d5c/blob
+Completed 302 Found in 25ms (ActiveRecord: 1.1ms | Allocations: 2653)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR1ExZDIwemVHRm5hamhuYmpJM2VHTXlibUowYm5VMGMzSXdOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpTjJGMGRHRmphRzFsYm5RN0lHWnBiR1Z1WVcxbFBTSmliRzlpSWpzZ1ptbHNaVzVoYldVcVBWVlVSaTA0SnlkaWJHOWlCanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQZG1sa1pXOHZkMlZpYlFZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMS0wOS0wNVQxMjoyNzoyNi43NzBaIiwicHVyIjoiYmxvYl9rZXkifX0=--23bd01e16aa8e144a5fe825c770b17b21a839d5c/blob" for ::1 at 2021-09-05 07:22:26 -0500
+Processing by ActiveStorage::DiskController#show as */*
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"blob"}
+Completed 206 Partial Content in 1ms (ActiveRecord: 0.0ms | Allocations: 227)
+
+
+Started DELETE "/meditations/1" for 127.0.0.1 at 2021-09-05 07:22:37 -0500
+Processing by MeditationsController#destroy as JSON
+  Parameters: {"_json"=>"", "id"=>"1", "meditation"=>{}}
+  [1m[36mMeditation Load (0.8ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meditations_controller.rb:30:in `destroy'
+  [1m[36mTeacher Load (0.6ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meditations_controller.rb:31:in `destroy'
+  [1m[36mMeditation Load (0.4ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."teacher_id" = $1[0m  [["teacher_id", 1]]
+  ↳ app/controllers/meditations_controller.rb:31:in `destroy'
+  [1m[36mMeditation Load (0.4ms)[0m  [1m[34mSELECT "meditations".* FROM "meditations" WHERE "meditations"."teacher_id" = $1 ORDER BY "meditations"."created_at" DESC[0m  [["teacher_id", 1]]
+  ↳ app/controllers/meditations_controller.rb:32:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/meditations_controller.rb:33:in `destroy'
+  [1m[36mPlay Load (0.5ms)[0m  [1m[34mSELECT "plays".* FROM "plays" WHERE "plays"."meditation_id" = $1[0m  [["meditation_id", 1]]
+  ↳ app/controllers/meditations_controller.rb:33:in `destroy'
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Meditation"], ["name", "audio_file"], ["LIMIT", 1]]
+  ↳ app/controllers/meditations_controller.rb:33:in `destroy'
+  [1m[36mActiveStorage::Attachment Destroy (0.5ms)[0m  [1m[31mDELETE FROM "active_storage_attachments" WHERE "active_storage_attachments"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/meditations_controller.rb:33:in `destroy'
+  [1m[36mMeditation Destroy (0.4ms)[0m  [1m[31mDELETE FROM "meditations" WHERE "meditations"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/meditations_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/meditations_controller.rb:33:in `destroy'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/meditations_controller.rb:33:in `destroy'
+[ActiveJob] Enqueued ActiveStorage::PurgeJob (Job ID: 030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9) to Async(default) with arguments: #<GlobalID:0x00007ffa03030480 @uri=#<URI::GID gid://react-rails-api-project-template/ActiveStorage::Blob/1>>
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 47ms (Views: 2.4ms | ActiveRecord: 6.0ms | Allocations: 7739)
+
+
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9] Performing ActiveStorage::PurgeJob (Job ID: 030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9) from Async(default) enqueued at 2021-09-05T12:22:37Z with arguments: #<GlobalID:0x00007ffa01319d88 @uri=#<URI::GID gid://react-rails-api-project-template/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9]   [1m[36mActiveStorage::Attachment Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1 LIMIT $2[0m  [["blob_id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9]   [1m[36mActiveStorage::VariantRecord Load (1.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1[0m  [["blob_id", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9]   [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "ActiveStorage::Blob"], ["name", "preview_image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9]   [1m[36mActiveStorage::Blob Destroy (1.0ms)[0m  [1m[31mDELETE FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1[0m  [["id", 1]]
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9]   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9] [36m  Disk Storage (0.3ms) [0m[31mDeleted file from key: xd5wm3xagj8gn27xc2nbtnu4sr06[0m
+[ActiveJob] [ActiveStorage::PurgeJob] [030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9] Performed ActiveStorage::PurgeJob (Job ID: 030bc8bf-cab1-4e1a-8ad2-5b0877a3b0f9) from Async(default) in 31.45ms
