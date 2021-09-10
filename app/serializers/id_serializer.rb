@@ -1,3 +1,3 @@
 class IdSerializer < ActiveModel::Serializer
-    attributes :id, :meditation_id
+  attributes :id, :meditation_id
 end

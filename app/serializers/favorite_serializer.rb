@@ -3,8 +3,8 @@ class FavoriteSerializer < ActiveModel::Serializer
 
 
   def teacher_name 
-  med = Meditation.find(object.meditation_id)
-  med.teacher.name
+    med = Meditation.find(object.meditation_id)
+    med.teacher.name
   end
 
   def teacher_image
