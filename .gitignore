@@ -3,4 +3,4 @@ node_modules
 # Ignore application configuration
 /config/application.yml
 /config/master.key
-
+/tmp
